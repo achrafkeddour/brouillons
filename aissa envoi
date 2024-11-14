@@ -1,0 +1,36 @@
+homme(amine).
+homme(samir).
+homme(adel).
+homme(djamel).
+homme(oualid).
+homme(mehdi).
+homme(ahmed).
+
+femme(fatima).
+femme(amel).
+femme(maroua).
+femme(houda).
+
+parent(amine,amel).
+parent(samir,djamel).
+parent(fatima,amel).
+parent(samir,mehdi).
+parent(maroua,oualid).
+parent(adel,oualid).
+parent(amel,adel).
+parent(djamel,adel).
+
+enfant(Y,X):-parent(X,Y).
+pere(X,Y):-parent(X,Y), homme(X).
+
+mere(X,Y):-parent(X,Y), femme(Y).
+grandparent(X,Y):-parent(Z,Y), parent(X,Z).
+grandpere(X,Y):-parent(Z,Y), parent(X,Z), homme(X).
+grandmere(X,Y):-parent(Z,Y), parent(X,Z), femme(X).
+
+arrieregrandparent(X,Y):-parent(Z,Y),parent(T,Z),parent(X,T).
+
+frere(X,Y):-parent(Z,Y), parent(Z,X), homme(X).
+soeur(X,Y):-parent(Z,Y), parent(Z,X), femme(X).
+
+
